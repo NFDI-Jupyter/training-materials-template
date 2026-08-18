@@ -1,0 +1,32 @@
+version: 1
+
+project:
+  title: TRAINING MATERIALS TITLE
+  github: https://github.com/NFDI-Jupyter/REPOSITORY
+  authors:
+    - name: AUTHOR'S NAME
+      orcid: AUTHOR'S ORCID
+
+  toc:
+    - file: modules/01_MODULE
+
+
+  # In-page execution (the "power" button at the top of the page) using Thebe
+  jupyter:
+    binder:
+      repo: NFDI-Jupyter/REPOSITORY
+      provider: github
+      ref: main
+
+site:
+  options:
+    logo: "Jupyter4NFDI-top.png"
+    favicon: "favicon.svg"
+  actions:
+    - title: Jupyter4NFDI
+      url: https://nfdi-jupyter.de/
+  parts:
+    primary_sidebar_footer: ''
+    footer: |
+      "This work is supported by the DFG project no.521453681."  |
+      [Jupyter4NFDI](https://nfdi-jupyter.de/)
