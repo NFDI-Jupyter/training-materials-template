@@ -22,6 +22,7 @@ site:
   options:
     logo: "Jupyter4NFDI-top.png"
     favicon: "favicon.svg"
+    style: custom.css
   actions:
     - title: Jupyter4NFDI
       url: https://nfdi-jupyter.de/
