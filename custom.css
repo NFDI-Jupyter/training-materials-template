@@ -1,0 +1,21 @@
+/* Custom css to modify the MyST default template */
+/* Show text next to the existing "Edit this page" icon */
+.myst-fm-edit-link::after {
+  content: "Edit this page";
+  margin-left: 0.25rem;
+  font-size: 0.875rem;
+  vertical-align: middle;
+}
+
+/* Keep icon + label nicely aligned */
+.myst-fm-edit-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+/* The icon already has a right margin in the MyST theme,
+   so remove it if the spacing looks too large */
+.myst-fm-edit-icon {
+  margin-right: 0;
+}
