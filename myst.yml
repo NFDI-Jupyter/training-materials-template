@@ -3,6 +3,7 @@ version: 1
 project:
   title: TRAINING MATERIALS TITLE
   github: https://github.com/NFDI-Jupyter/REPOSITORY
+  license: CC-BY-4.0
   authors:
     - name: AUTHOR'S NAME
       orcid: AUTHOR'S ORCID
