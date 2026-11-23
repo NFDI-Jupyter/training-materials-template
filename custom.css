@@ -19,3 +19,133 @@
 .myst-fm-edit-icon {
   margin-right: 0;
 }
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --j4n-primary: #023d6b;
+  --j4n-secondary: #adbde3;
+  --j4n-ink: #203247;
+  --j4n-muted: #516378;
+  --j4n-surface: #f5f8fc;
+  --j4n-border: #dbe4f0;
+  --j4n-focus: #1268a5;
+  --j4n-font: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  /* Common MyST design-token names, if the installed theme uses them. */
+  --myst-color-primary: var(--j4n-primary);
+  --myst-color-primary-500: var(--j4n-primary);
+}
+
+/* Scope text to documentation surfaces; don't overwrite icon fonts or math. */
+html { font-family: var(--j4n-font); }
+body { font-family: var(--j4n-font); color: var(--j4n-ink); }
+:where(main, article, .myst-content, .prose, .article) { font-family: var(--j4n-font); }
+:where(main, article, .myst-content, .prose, .article) :where(h1, h2, h3, h4, h5, h6) {
+  color: var(--j4n-primary);
+  font-family: var(--j4n-font);
+  font-weight: 700;
+  letter-spacing: -0.018em;
+  line-height: 1.28;
+  scroll-margin-top: 5rem;
+}
+:where(main, article, .myst-content, .prose, .article) h1 {
+  font-size: clamp(1.85rem, 3vw, 2.5rem);
+  letter-spacing: -0.03em;
+}
+:where(main, article, .myst-content, .prose, .article) :where(h2, h3) { margin-top: 1.7em; }
+
+/* Content links: exclude code and controls to preserve accessible functionality. */
+:where(main, article, .myst-content, .prose, .article) a:not(.button):not(.btn):not([role='button']) {
+  color: var(--j4n-primary);
+  text-decoration-color: var(--j4n-secondary);
+  text-underline-offset: 0.2em;
+}
+:where(main, article, .myst-content, .prose, .article) a:not(.button):not(.btn):not([role='button']):hover {
+  text-decoration-color: currentColor;
+}
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid var(--j4n-focus);
+  outline-offset: 3px;
+}
+
+/* Documentation controls and active navigation. Avoid whole-header overrides. */
+:where(nav, aside, header) a[aria-current='page'],
+:where(nav, aside, header) a[aria-current='true'] {
+  color: var(--j4n-primary);
+  font-weight: 700;
+}
+:where(nav, aside, header) a:hover { color: var(--j4n-primary); }
+:where(main, article, .myst-content) :where(.button, .btn, a[role='button']) {
+  border-radius: 0.45rem;
+}
+
+/* Course content: subtly branded tables, quotations, and examples. */
+:where(main, article, .myst-content, .prose, .article) blockquote {
+  border-left: 4px solid var(--j4n-secondary);
+  background: var(--j4n-surface);
+  padding: 0.8rem 1.15rem;
+  border-radius: 0 0.45rem 0.45rem 0;
+  color: var(--j4n-ink);
+}
+:where(main, article, .myst-content, .prose, .article) :where(table, .table) {
+  border-collapse: collapse;
+  max-width: 100%;
+}
+:where(main, article, .myst-content, .prose, .article) :where(th, td) {
+  border-bottom: 1px solid var(--j4n-border);
+  padding: 0.6rem 0.85rem;
+}
+:where(main, article, .myst-content, .prose, .article) thead th {
+  background: var(--j4n-surface);
+  color: var(--j4n-primary);
+  font-weight: 700;
+}
+:where(main, article, .myst-content, .prose, .article) :where(pre, .highlight) {
+  border-radius: 0.5rem;
+}
+:where(main, article, .myst-content, .prose, .article) :not(pre) > code {
+  overflow-wrap: anywhere;
+}
+:where(main, article, .myst-content, .prose, .article) :where(.admonition, .callout) {
+  border-radius: 0.5rem;
+  border-left-width: 4px;
+}
+:where(main, article, .myst-content, .prose, .article) img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Keep logos controlled but do not resize every documentation image. */
+:where(header, nav, aside) img[alt*='Jupyter4NFDI'],
+:where(header, nav, aside) img[src*='Jupyter4NFDI-top'] {
+  max-width: 13rem;
+  max-height: 3.5rem;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Responsive long examples — no fixed content widths or horizontal overflow. */
+:where(main, article, .myst-content, .prose, .article) :where(pre, .highlight) {
+  max-width: 100%;
+  overflow-x: auto;
+}
+@media (max-width: 640px) {
+  :where(main, article, .myst-content, .prose, .article) h1 { font-size: 1.85rem; }
+  :where(main, article, .myst-content, .prose, .article) blockquote { padding: 0.7rem 0.9rem; }
+}
+/* Match the dark theme instead of forcing light colors on dark backgrounds. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --j4n-ink: #e6edf5;
+    --j4n-muted: #bac8d8;
+    --j4n-surface: #172d43;
+    --j4n-border: #3b536b;
+  }
+  :where(main, article, .myst-content, .prose, .article) :where(h1, h2, h3, h4, h5, h6) { color: #b9d9f1; }
+  :where(main, article, .myst-content, .prose, .article) a:not(.button):not(.btn):not([role='button']) { color: #a9d5f2; }
+  :where(nav, aside, header) a[aria-current='page'],
+  :where(nav, aside, header) a[aria-current='true'] { color: #a9d5f2; }
+  :where(main, article, .myst-content, .prose, .article) thead th { color: #b9d9f1; }
+}
